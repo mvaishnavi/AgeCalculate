@@ -11,22 +11,13 @@ public class AgeCalculate {
         System.out.println("Birth year "+birthYear );
         int age = computeAge(currentYear,birthYear);
         boolean checkLeap= calculateLeapYear(birthYear);
-        if(checkLeap==true) {
-            calculateSpecialPower(age);
-        }
-        else {
-            System.out.println("He has no special powers!");
-        }
+        calculateSpecialPower(age,checkLeap);
         int x = 4;
         int newBirthYear = birthYear + x;
         System.out.println("Birth year "+newBirthYear );
         int newAge=computeAge(currentYear,newBirthYear);
         checkLeap= calculateLeapYear(newBirthYear);
-        if(checkLeap==true) {
-            calculateSpecialPower(newAge);
-        }
-        else
-            System.out.println("He has no special powers!");
+        calculateSpecialPower(newAge,checkLeap);
     }
 
     private static int computeAge(int currentYear, int birthYear ) {
@@ -46,9 +37,11 @@ public class AgeCalculate {
         }
     }
 
-    private static void calculateSpecialPower(int age) {
-        if ( age == 18)
+    private static void calculateSpecialPower(int age, boolean checkLeap) {
+        if ( checkLeap==true && age == 18)
             System.out.println("He has special powers!");
+        else
+            System.out.println("He has no special powers!");
     }
 
 
