@@ -10,8 +10,8 @@ public class AgeCalculate {
         int birthYear= Integer.parseInt(dateSplit[2]);
         System.out.println("Birth year "+birthYear );
         int age = computeAge(currentYear,birthYear);
-        int leap= calculateLeapYear(birthYear);
-        if(leap==1) {
+        boolean checkLeap= calculateLeapYear(birthYear);
+        if(checkLeap==true) {
             calculateSpecialPower(age);
         }
         else {
@@ -21,8 +21,8 @@ public class AgeCalculate {
         int newBirthYear = birthYear + x;
         System.out.println("Birth year "+newBirthYear );
         int newAge=computeAge(currentYear,newBirthYear);
-        int checkLeap= calculateLeapYear(newBirthYear);
-        if(checkLeap==1) {
+        checkLeap= calculateLeapYear(newBirthYear);
+        if(checkLeap==true) {
             calculateSpecialPower(newAge);
         }
         else
@@ -35,18 +35,18 @@ public class AgeCalculate {
         return(age);
     }
 
-    public static int calculateLeapYear(int birthYear) {
+    private static boolean calculateLeapYear(int birthYear) {
         if(birthYear%4 == 0 && birthYear % 400 ==0) {
             System.out.println("Birth Year is a Leap year");
-            return (1);
+            return true;
         }
-        else{
+        else {
             System.out.println("Birth Year is not a Leap year");
-            return (0);
+            return false;
         }
     }
 
-    public static void calculateSpecialPower(int age) {
+    private static void calculateSpecialPower(int age) {
         if ( age == 18)
             System.out.println("He has special powers!");
     }
